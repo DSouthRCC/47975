@@ -1,0 +1,4 @@
+Project Goal is:
+
+templated polymorphic array of classes
+

@@ -1,0 +1,236 @@
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <fstream>
+
+#include "Weapon.h"
+#include "Opponent.h"
+
+using namespace std;
+void header();
+void loadOpp(Opponent *, const short);
+void showOpp(Opponent *, const short);
+//void setPlWpn(Weapon *);
+//void setPlArmr(Armor *);
+//short setPlAgi();
+//short setPlDef();
+
+int main(int argc, char** argv) {
+    const short NUM_OPPS = 10;
+    Opponent *current;
+
+    header();
+    loadOpp(current, NUM_OPPS);
+    //showOpp(current, NUM_OPPS);
+    
+        for (short i = 0; i < NUM_OPPS; i++)
+    {
+        cout << "Opponent " << i+1 << " is: " << endl;
+        cout << current[i].name << ", "
+                << current[i].oppWpTp << ", "
+                << current[i].oppArTp << ", "
+                << current[i].oppStr << ", "
+                << current[i].oppAgi << ", "
+                << current[i].oppWpSp << ", "
+                << current[i].oppWpRc << ", "
+                << current[i].oppDef << endl;
+        cout << endl;
+    }
+    
+//string plyrName;
+
+//cout << "Welcome to Gladius!" << endl;
+//cout << endl << "What is your name Gladiator? ";
+//getline(cin, plyrName);
+//cout << endl << "What set will you use?";
+
+return 0;
+}
+void header() {
+    string title; //shows title mainMenu
+    fstream titleFile; //gets tile mainMenu
+    // Open the file in input mode.
+    titleFile.open("title.txt", ios::in);
+    // If the file was successfully opened, continue.
+    if (titleFile) {
+        // Read an item from the file.
+        getline(titleFile, title);
+        // read in file.
+        while (titleFile) {
+            // Display the last item read.
+            cout << title << endl;
+            // Read the next item.
+            getline(titleFile, title);
+        }
+        // Close the file.
+        titleFile.close();
+    } else {
+        cout << "ERROR: Cannot open file.\n";
+    }
+}
+
+void loadOpp(Opponent *current, const short NUM_OPPS)
+{
+    current = new Opponent[NUM_OPPS];
+    
+    ifstream getOpps; //write to file
+
+    getOpps.open("opponents.txt");
+    if (!getOpps) {
+        cout << endl << "File not found";
+    }
+    	else
+        {
+    cout << endl << "opened";
+    cout << endl << "loading opponents";
+    cout << endl << endl;
+       
+			for (short i = 0; i < NUM_OPPS; i++)																//start of loop
+				{	// write struct data from file	
+                            //{"Name", "Weapon", "Armor", Str, Agi, Spd, Rch, Def}
+					getOpps >>
+					current[i].name >>
+					current[i].oppWpTp >>
+                                        current[i].oppStr >>
+                                        current[i].oppAgi >>
+                                        current[i].oppWpSp >>
+                                        current[i].oppWpRc >>
+                                        current[i].oppDef;
+					cout<<" Opponent "<< i+1 << "loaded"<<endl;
+				}
+			cout <<"All members have been successfully loaded"<<endl;
+			getOpps.close();
+		}
+}
+
+void showOpp(Opponent *current, const short NUM_OPPS)
+{
+    for (short i = 0; i < NUM_OPPS; i++)
+    {
+        cout << "Opponent " << i+1 << "is: " << endl;
+        cout << current[i].name << ", "
+                << current[i].oppWpTp << ", "
+                << current[i].oppArTp << ", "
+                << current[i].oppStr << ", "
+                << current[i].oppAgi << ", "
+                << current[i].oppWpSp << ", "
+                << current[i].oppWpRc << ", "
+                << current[i].oppDef << endl;
+        cout << endl;
+    }
+}
+/*
+void setPlWpn(Weapon *player) {
+    char choice;
+
+    cout << endl << "Choose Weapon Type";
+    cout << "1: One-Handed Short Sword" << endl
+            << "2: One-Handed Mace" << endl
+            << "3: One-Handed Hammer" << endl
+            << "4: One-Handed Flail" << endl
+            << "5: Two-Handed Long Sword" << endl
+            << "6: Two-Handed Hammer" << endl
+            << "7: Two Handed Trident" << endl
+            << "8: Two Short Swords";
+    cin >> choice;
+
+    if (choice = 1) {
+        player->plWpType = "Short Sword";
+        player->wpDmg = 5;
+        player->wpRch = 1;
+        player->wpSpd = 4;
+        player->plDefUp = 0;
+        player->plAgiDwn = 0;
+    } else if (choice = 2) {
+        player->plWpType = "One-Handed Mace";
+        player->wpDmg = 6;
+        player->wpRch = 1;
+        player->wpSpd = 3;
+        player->plDefUp = 0;
+        player->plAgiDwn = 0;
+    } else if (choice = 3) {
+        player->plWpType = "One-Handed Hammer";
+        player->wpDmg = 6;
+        player->wpRch = 1;
+        player->wpSpd = 2;
+        player->plDefUp = 0;
+        player->plAgiDwn = 0;
+    } else if (choice = 4) {
+        player->plWpType = "One-Handed Flail";
+        player->wpDmg = 7;
+        player->wpRch = 2;
+        player->wpSpd = 2;
+        player->plDefUp = 0;
+        player->plAgiDwn = 0;
+    } else if (choice = 5) {
+        player->plWpType = "Two-Handed Long Sword";
+        player->wpDmg = 8;
+        player->wpRch = 3;
+        player->wpSpd = 2;
+        player->plDefUp = 2;
+        player->plAgiDwn = 2;
+    } else if (choice = 6) {
+        player->plWpType = "Two-Handed Hammer";
+        player->wpDmg = 12;
+        player->wpRch = 3;
+        player->wpSpd = 2;
+        player->plDefUp = 2;
+        player->plAgiDwn = 3;
+    } else if (choice = 7) {
+        player->plWpType = "Two Handed Trident";
+        player->wpDmg = 10;
+        player->wpRch = 4;
+        player->wpSpd = 3;
+        player->plDefUp = 2;
+        player->plAgiDwn = 1;
+    } else if (choice = 8) {
+        player->plWpType = "Two Short Swords";
+        player->wpDmg = 5;
+        player->wpRch = 1;
+        player->wpSpd = 4;
+        player->plDefUp = 1;
+        player->plAgiDwn = 1;
+    }
+}
+
+void setPlArmr(Armor *player) {
+    char choice;
+
+    cout << endl << "Choose Weapon Type";
+    cout << "1: Half Leather" << endl
+            << "2: Full Leather" << endl
+            << "3: Half Ring" << endl
+            << "4: Full Ring" << endl
+            << "5: Half Bronze" << endl
+            << "6: Full Bronze" << endl;
+
+            cin >> choice;
+
+    if (choice = 1) {
+        player->plArType = "Half Leather";
+        player->plDefUp = 3;
+        player->plAgiDwn = 2;
+    } else if (choice = 2) {
+        player->plArType = "Full Leather";
+        player->plDefUp = 4;
+        player->plAgiDwn = 3;
+    } else if (choice = 3) {
+        player->plArType = "Half Ring";
+        player->plDefUp = 4;
+        player->plAgiDwn = 2;
+    } else if (choice = 4) {
+        player->plArType = "Full Ring";
+        player->plDefUp = 5;
+        player->plAgiDwn = 4;
+    } else if (choice = 5) {
+        player->plArType = "Half Bronze";
+        player->plDefUp = 5;
+        player->plAgiDwn = 3;
+    } else if (choice = 6) {
+        player->plArType = "Full Bronze";
+        player->plDefUp = 6;
+        player->plAgiDwn = 5;
+    }
+}
+ * */

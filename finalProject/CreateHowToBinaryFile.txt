@@ -1,0 +1,90 @@
+// This program uses a structure variable to store a record to a file.
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+// Declare a structure for the record.
+struct HowToPlay {
+    
+    string gamePlay;
+    string playerStats;
+    string combat;
+    string wpnsArmr;
+    
+};
+
+int main()
+{
+    Weapons read;	//add weapons
+    const short NUM_Files = 4;
+    Weapons loaded[NUM_WEPS] = {{"Game Play:\nGladius is played in alternating rounds of combat where you and\nyour opponent select actions and carry them out. Both actions are\nacted out at the same time. For example, if you chose to block and\nyour opponent choses also to block, the round will end and new\nactions will be selected. If you chose to dodge and your opponent\nchoses to attack, combat will be resolved.\n\nCombat ends when one player falls to 1 health or below. At the\nend of Combat the Emperor will pass judgement upon the fallen.\nbased on the amount of favor they have earned. The less favor\nthe more likely it is that the Emperor will let the gladiator die\nto please the crowd. The more favor, the more likely they will be\nglorified for their achievements."}, {"Player Stats:\nPlayer Stats are randomly assigned at the beginning of the game.\nThey are created as a random average and increased by your choice\nof weapon and armor. Your base stats are:\n\nHealth - How much damage you can take before surrender.\nStrength - How hard you can hit for with a weapon.\nAgility - Your ability to parry and dodge incoming attacks\nDefense Rating - The amount of damage you can mitigate.\nFatigue - As you fight, your combat prowess will decrease.\nFavor - As you gain favor, your abilities will increase slightly.\nIf you fall in the arena, Favor will also play a factor in the\nEmperor's judgement on you."}, {"3"},
+     {"4"}};
+        char again;	
+
+	// Open a file for binary output.
+	fstream weps("howtoplay.dat", ios::out | ios::binary);
+
+        
+        
+        for (short i = 0; i < NUM_WEPS; i++)
+        {
+            
+            weps.write(reinterpret_cast<char *>(&loaded[i]),
+			         sizeof(loaded[i]));
+        }
+
+	// Close the file.
+        cout << endl << "closing the file;";
+	weps.close();
+        
+       
+        cout << endl << "opening file to read" << endl;
+        // Open a file for input in binary mode.
+	weps.open("howtoplay.dat", ios::in | ios::binary);
+
+	// Test for errors.
+	if (!weps)
+	{
+		cout << "Error opening file. Program aborting.\n";
+		return 0;
+	}
+
+	cout << "Here are the weapons in the file: \n\n";
+	// Read the first record from the file.
+	weps.read(reinterpret_cast<char *>(&read),
+			    sizeof(read));
+
+	// While not at the end of the file,
+	// display the records.
+	while (!weps.eof())
+	{
+		// Display the record.
+            
+		cout << "Weapon Type: ";
+		cout << read.wpType << endl;
+                cout << "Base Damage: ";
+		cout << read.wpDmg << endl;
+                cout << "Weapon Speed: ";
+		cout << read.wpSpd << endl;
+                cout << "Weapon Reach: ";
+		cout << read.wpRch << endl;
+                cout << "Defensive Bonus: ";
+		cout << read.defUp << endl;
+                cout << "Agility loss: ";
+		cout << read.agiDwn << endl;
+		// Wait for the user to press the Enter key.
+		cout << "\nPress the Enter key to see the next record.\n";
+		cin.get();
+
+		// Read the next record from the file.
+		weps.read(reinterpret_cast<char *>(&read),
+			        sizeof(read));
+	} 
+
+	// Close the file.
+	cout << "That's all the data in the file!\n";
+	weps.close();
+
+        
+	return 0;
+}

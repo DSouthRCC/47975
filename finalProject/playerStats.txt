@@ -1,0 +1,13 @@
+Player Stats:
+Player Stats are randomly assigned at the beginning of the game.
+They are created as a random average and increased by your choice
+of weapon and armor. Your base stats are:
+
+Health - How much damage you can take before surrender.
+Strength - How hard you can hit for with a weapon.
+Agility - Your ability to parry and dodge incoming attacks
+Defense Rating - The amount of damage you can mitigate.
+Fatigue - As you fight, your combat prowess will decrease.
+Favor - As you gain favor, your abilities will increase slightly.
+If you fall in the arena, Favor will also play a factor in the
+Emperor's judgement on you.

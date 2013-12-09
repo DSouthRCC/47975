@@ -1,0 +1,10 @@
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5
+"Name", "Weapon", "Armor", 6, 8, 3, 1, 5

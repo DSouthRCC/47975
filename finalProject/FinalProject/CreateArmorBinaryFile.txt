@@ -1,0 +1,82 @@
+// This program uses a structure variable to store a record to a file.
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+// Declare a structure for the record.
+struct Weapons
+{
+    char ArType[15];
+    short DefUp;
+    short AgiDwn;
+};
+
+int main()
+{
+    Weapons read;	//add weapons
+    const short NUM_WEPS = 6;
+    Weapons loaded[NUM_WEPS] = {{"1", 0, 0 }, {"2", 0, 0 }, {"3", 0, 0 }, {"4", 0, 0 }, 
+    {"5", 0, 0 }, {"6", 0, 0 }};
+        char again;	
+
+	// Open a file for binary output.
+	fstream weps("armors.dat", ios::out | ios::binary);
+
+        
+        
+        for (short i = 0; i < NUM_WEPS; i++)
+        {
+            
+            weps.write(reinterpret_cast<char *>(&loaded[i]),
+			         sizeof(loaded[i]));
+        }
+ 
+	// Close the file.
+        cout << endl << "closing the file;";
+	weps.close();
+        
+       
+        cout << endl << "opening file to read" << endl;
+        // Open a file for input in binary mode.
+	weps.open("weapons.dat", ios::in | ios::binary);
+
+	// Test for errors.
+	if (!weps)
+	{
+		cout << "Error opening file. Program aborting.\n";
+		return 0;
+	}
+
+	cout << "Here are the weapons in the file: \n\n";
+	// Read the first record from the file.
+	weps.read(reinterpret_cast<char *>(&read),
+			    sizeof(read));
+
+	// While not at the end of the file,
+	// display the records.
+	while (!weps.eof())
+	{
+		// Display the record.
+            
+		cout << "Weapon Type: ";
+		cout << read.ArType << endl;
+                cout << "Base Damage: ";
+		cout << read.DefUp << endl;
+                cout << "Weapon Speed: ";
+		cout << read.AgiDwn << endl;
+		// Wait for the user to press the Enter key.
+		cout << "\nPress the Enter key to see the next record.\n";
+		cin.get();
+
+		// Read the next record from the file.
+		weps.read(reinterpret_cast<char *>(&read),
+			        sizeof(read));
+	} 
+
+	// Close the file.
+	cout << "That's all the data in the file!\n";
+	weps.close();
+
+        
+	return 0;
+}

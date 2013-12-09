@@ -1,0 +1,81 @@
+Developed by David South for CSC 17A section 47975 at Riverside City
+
+How To Play:
+Ave Imperator is played in alternating rounds of combat where you and
+your opponent select actions and carry them out. 
+
+Player Stats:
+Player Stats are randomly assigned at the beginning of the game.
+They are created as a random average and increased by your choice
+of weapon and armor. Your base stats are:
+
+Health - How much damage you can take before surrender.
+Strength - How hard you can hit for with a weapon.
+Agility - Your ability to parry and dodge incoming attacks
+Defense Rating - The amount of damage you can mitigate.
+Fatigue - As you fight, your combat prowess will decrease.
+Favor - As you gain favor, your abilities will increase slightly.
+If you fall in the arena, Favor will also play a factor in the
+Emperor's judgement on you.
+
+Combat:
+Combat is resolved in rounds, during each round you and your
+opponent will select your actions and combat will be resolved.
+There are many actions available to you in combat, attack, block
+dodge, parry, counter, special attack, and recover. Not all of 
+these options will be available to you during every combat round.
+
+Attacks, of course, deal damage!
+Damage is dealt by combining your strength with the damage of your
+selected weapon mixed with some math voodoo and then mitigated by
+your opponents defense.
+
+Blocking will provide you with a temporary increase to your defense
+potentially soaking up more damage than normal.
+
+Dodge gives you a chance to completely move out of the path of an
+incoming attack. At the cost of not doing any damage that round.
+
+Parry gives you the chance to fully block the incoming attack of
+your opponent and also confers a bonus to attack for the next round
+BUT - if your parry fails, you take bonus damage from the current
+attack.
+
+Counter attacks are a quick block and strike to your opponent. You
+will take reduced damage from your opponent and deal a small amount
+of damage yourself this round. Counter attacks will only be
+successful if your opponent attacks.
+
+Special Attacks are provided based on the amount of Favor you have.
+They are only available when you have more than 70% of your current
+fatigue, and tire you out faster.  These attacks do increased 
+damage when they are available.
+
+Recover allows you gain back some fatigue during combat at the cost
+of not attacking or defending that round.
+
+Weapon stats:
+In Ave Imperator, your weapon is your life, there are several to chose
+from to fit your own preferred playstyle.
+
+All One-Handed Weapons are paired with a shield which will increase
+your ability to block damage
+
+Base Damage - this is the minimum amount of damage if you hit.
+
+Weapon Speed - the higher the number, the less likely your attack
+will be blocked or parried
+
+Weapon Reach - longer reaches provide additional defensive bonuses
+as well as counter attack opportunities
+
+Defensive Bonus - defensive bonus for chosing a two handed weapon
+over a one hand and a shield
+
+Agility Loss - larger heavier weapons that do more damage are also
+harder to swing. They do more damage, but can be blocked easier.
+
+Armor Stats:
+Armor only has two stats, Defensive Bonus and Agility Loss. These
+represent the ability for you to block incoming damage, but also
+the loss of mobility to either dodge or parry incoming attacks.
