@@ -1,0 +1,112 @@
+// This program uses a structure variable to store a record to a file.
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+// Declare a structure for the record.
+struct Weapons
+{
+    char wpType[25];
+    short wpDmg;
+    short wpSpd;
+    short wpRch;
+    short defUp;
+    short agiDwn;
+};
+
+int main()
+{
+	//Weapons add;	//add weapons
+    Weapons loaded[8] = {{"", 0, 0, 0, 0, 0 }, {"", 0, 0, 0, 0, 0 }, {"", 0, 0, 0, 0, 0 },
+     {"", 0, 0, 0, 0, 0 }, {"", 0, 0, 0, 0, 0 }, {"", 0, 0, 0, 0, 0 }, {"", 0, 0, 0, 0, 0 },
+     {"", 0, 0, 0, 0, 0 }};
+        char again;	
+
+	// Open a file for binary output.
+	fstream weps("weapons.dat", ios::out | ios::binary);
+/*
+	do
+	{
+		// Get data about a person.
+		cout << "Enter the following data about a "
+		     << "add:\n";
+		cout << "Weapon Type: ";
+		cin.getline(add.wpType, 25);
+		cout << "Base Damage: ";
+		cin >> add.wpDmg;
+		cin.ignore();	// Skip over the remaining newline.
+                cout << "Weapon Speed: ";
+		cin >> add.wpSpd;
+		cin.ignore();	// Skip over the remaining newline.
+                cout << "Weapon Reach: ";
+		cin >> add.wpRch;
+		cin.ignore();	// Skip over the remaining newline.
+                cout << "Defensive Bonus: ";
+		cin >> add.defUp;
+		cin.ignore();	// Skip over the remaining newline.
+                cout << "Agility loss: ";
+		cin >> add.agiDwn;
+		cin.ignore();	// Skip over the remaining newline.
+
+		// Write the contents of the person structure to the file.
+		weps.write(reinterpret_cast<char *>(&add),
+			         sizeof(add));
+
+		// Determine wheter the user wants to write another record.
+		cout << "Do you want to enter another record? ";
+		cin >> again;
+		cin.ignore();	// Skip over the remaining newline.
+	} while (again == 'Y' || again == 'y');
+*/
+	// Close the file.
+	weps.close();
+        
+        // Open a file for input in binary mode.
+	weps.open("weapons.dat", ios::in | ios::binary);
+
+	// Test for errors.
+	if (!weps)
+	{
+		cout << "Error opening file. Program aborting.\n";
+		return 0;
+	}
+
+	cout << "Here are the weapons in the file: \n\n";
+	// Read the first record from the file.
+	weps.read(reinterpret_cast<char *>(&add),
+			    sizeof(add));
+
+	// While not at the end of the file,
+	// display the records.
+	while (!weps.eof())
+	{
+		// Display the record.
+            
+		cout << "Weapon Type: ";
+		cout << add.wpType << endl;
+                cout << "Base Damage: ";
+		cout << add.wpDmg << endl;
+                cout << "Weapon Speed: ";
+		cout << add.wpSpd << endl;
+                cout << "Weapon Reach: ";
+		cout << add.wpRch << endl;
+                cout << "Defensive Bonus: ";
+		cout << add.defUp << endl;
+                cout << "Agility loss: ";
+		cout << add.agiDwn << endl;
+		// Wait for the user to press the Enter key.
+		cout << "\nPress the Enter key to see the next record.\n";
+		cin.get();
+
+		// Read the next record from the file.
+		weps.read(reinterpret_cast<char *>(&add),
+			        sizeof(add));
+	} 
+
+	// Close the file.
+	cout << "That's all the data in the file!\n";
+	weps.close();
+        
+        
+	return 0;
+}

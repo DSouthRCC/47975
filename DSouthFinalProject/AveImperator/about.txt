@@ -1,0 +1,12 @@
+Ave Imperator puts you into the role of a Gladiator fighting for the favor
+of the Emperor! Create a Gladiator, chose your weapon and armor and
+do battle with the champions of Rome. Win, and you will be rewarded
+greatly, fail, and you could end up dead, or worse!
+
+Ave Imperator is your adventure into the Colosseum of Rome. You will face
+10 of the fircest warriors Rome has ever sent into the arena to earn
+praise and glory from the citizens and Emperor of Rome.  
+
+Developed by David South for CSC 17A section 47975 at Riverside City
+College Fall 2013. Parts of this program have been modified from 
+the class textbook written by Tony Gaddis and from class lectures.

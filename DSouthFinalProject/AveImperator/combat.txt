@@ -1,0 +1,16 @@
+Combat:
+Combat is resolved in rounds, during each round you and your
+opponent will select your actions and combat will be resolved.
+
+Attacks, of course, deal damage!
+Damage is created at the attack, and mitigated by any defensive
+actions.
+
+Blocking will provide you with a temporary increase to your defense
+potentially soaking up more damage than normal.
+
+Dodge gives you a chance to completely move out of the path of an
+incoming attack. At the cost of not doing any damage that round.
+
+Parry gives you the chance to fully block the incoming attack of
+your opponent and deal some damage as a counter
